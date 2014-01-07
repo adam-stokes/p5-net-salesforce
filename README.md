@@ -1,6 +1,6 @@
 # NAME
 
-Net::Salesforce - Blah blah blah
+Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
 
 # SYNOPSIS
 
@@ -8,7 +8,7 @@ Net::Salesforce - Blah blah blah
 
 # DESCRIPTION
 
-Net::Salesforce is
+Net::Salesforce is an authentication module for Salesforce OAuth 2.
 
 # AUTHOR
 

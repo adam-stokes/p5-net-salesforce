@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Authentication against Salesforce OAuth 2 endpoints.",
    "author" : [
       "Adam Stokes <adamjs@cpan.org>"
    ],
@@ -46,6 +46,20 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/battlemidget/Net-Salesforce/issues"
+      },
+      "homepage" : "https://github.com/battlemidget/Net-Salesforce",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/battlemidget/Net-Salesforce.git",
+         "web" : "https://github.com/battlemidget/Net-Salesforce"
+      }
+   },
+   "version" : "0.01",
+   "x_contributors" : [
+      "Adam Stokes <adam.stokes@ubuntu.com>"
+   ]
 }
 
