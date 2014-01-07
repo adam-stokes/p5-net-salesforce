@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 use FindBin;
-BEGIN { unshit @INC, "$FindBin::Bin/../lib" }
+BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
 
 use Mojolicious::Lite;
 use Net::Salesforce;
@@ -13,8 +13,8 @@ get '/' => sub {
 
 post '/auth' => sub {
   my ($c) = @_;
-  my $sf = Net::Salesforce->new;
-  return $c->redirect_to($sf->authenticate);
+  my $sf = Net::Salesforce->new(key => $ENV{SFKEY}, secret => $ENV{SFSECRET});
+  return $c->redirect_to($sf->authorize_url);
 };
 
 get '/callback' => sub {

@@ -3,6 +3,7 @@ requires 'Mojo::Base';
 requires 'Mojo::Parameters';
 requires 'Mojo::URL';
 requires 'Mojo::UserAgent';
+requires 'Mojolicious::Lite';
 
 on build => sub {
     requires 'Test::More';

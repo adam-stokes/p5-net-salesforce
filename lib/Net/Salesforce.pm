@@ -5,12 +5,13 @@ use Mojo::UserAgent;
 use Mojo::URL;
 use Mojo::Parameters;
 use Digest::SHA;
+use DDP;
 
 our $VERSION = '0.01';
 
 has 'key';
 has 'secret';
-has 'redirect_uri' => 'http://localhost:3000/callback';
+has 'redirect_uri' => 'https://localhost:3000/callback';
 has 'access_token_url' => 'https://login.salesforce.com/services/oauth2/token';
 has 'scope' => 'api';
 has 'response_type' => 'code';
@@ -23,6 +24,18 @@ has 'params' => sub {
     };
 };
 
+has 'json' => sub {
+    my $self = shift;
+    my $json = Mojo::JSON->new;
+    return $json;
+};
+
+has 'ua' => sub {
+    my $self = shift;
+    my $ua = Mojo::UserAgent->new;
+    $ua->transactor->name("Net::Salesforce/$VERSION");
+    return $ua;
+};
 
 sub verify_signature {
     my ($self, $payload) = @_;
@@ -62,29 +75,16 @@ sub authorize_url {
 
 sub oauth2 {
     my $self = shift;
-    my $tx = $self->_ua->post($self->access_token_url => form => $self->params);
-
+    my $tx = $self->ua->post($self->access_token_url => form => $self->params);
+    p $self->params;
+    p $tx->res;
     die $tx->res->body unless $tx->success;
 
-    my $payload = $self->_json->decode($tx->res->body);
+    my $payload = $self->json->decode($tx->res->body);
     die "Unable to verify signature" unless $self->verify_signature($payload);
 
     return $payload;
 }
-
-sub _json {
-    my $self = shift;
-    $self->{_json} = Mojo::JSON->new unless ($self->{_json});
-    return $self->{_json};
-}
-
-sub _ua {
-    my $self = shift;
-    $self->{_ua} = Mojo::UserAgent->new(name => "Net::Salesforce/$VERSION")
-      unless ($self->{_ua});
-    return $self->{_ua};
-}
-
 
 1;
 __END__
@@ -120,6 +120,14 @@ Net::Salesforce is an authentication module for Salesforce OAuth 2.
 =head2 scope
 
 =head2 secret
+
+=head2 ua
+
+A L<Mojo::UserAgent> object.
+
+=head2 json
+
+A L<Mojo::JSON> object.
 
 =head1 METHODS
 

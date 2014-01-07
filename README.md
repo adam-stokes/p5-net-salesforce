@@ -28,6 +28,14 @@ Net::Salesforce is an authentication module for Salesforce OAuth 2.
 
 ## secret
 
+## ua
+
+A [Mojo::UserAgent](https://metacpan.org/pod/Mojo::UserAgent) object.
+
+## json
+
+A [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) object.
+
 # METHODS
 
 ## verify\_signature

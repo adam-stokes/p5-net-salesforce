@@ -47,7 +47,8 @@
             "Mojo::Base" : "0",
             "Mojo::Parameters" : "0",
             "Mojo::URL" : "0",
-            "Mojo::UserAgent" : "0"
+            "Mojo::UserAgent" : "0",
+            "Mojolicious::Lite" : "0"
          }
       },
       "test" : {
