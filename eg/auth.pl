@@ -1,4 +1,8 @@
 #!/usr/bin/env perl
+#
+# You'll want to create a self signed cert for this
+#
+# openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes
 
 use FindBin;
 BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
@@ -6,6 +10,8 @@ BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
 use Mojolicious::Lite;
 use Net::Salesforce;
 use DDP;
+
+@ARGV = qw(daemon --listen https://*:3000?cert=server.crt&key=server.key);
 
 get '/' => sub {
   my ($c) = @_;
