@@ -97,6 +97,12 @@ Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
 
   use Net::Salesforce;
 
+  my $sf = Net::Salesforce->new(
+      'key'          => $ENV{SFKEY},
+      'secret'       => $ENV{SFSECRET},
+      'redirect_uri' => 'https://localhost:8081/callback'
+  );
+
 =head1 DESCRIPTION
 
 Net::Salesforce is an authentication module for Salesforce OAuth 2.
