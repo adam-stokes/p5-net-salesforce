@@ -5,14 +5,13 @@ use Mojo::UserAgent;
 use Mojo::URL;
 use Mojo::Parameters;
 use Digest::SHA;
-use DDP;
 
 our $VERSION = '0.01';
 
 has 'key';
 has 'secret';
-has 'redirect_uri' => 'https://localhost:3000/callback';
-has 'access_token_url' => 'https://login.salesforce.com/services/oauth2/token';
+has 'redirect_uri' => 'https://localhost:8081/callback';
+has 'access_token_url' => 'https://na15.salesforce.com/services/oauth2/token';
 has 'scope' => 'api';
 has 'response_type' => 'code';
 has 'params' => sub {
@@ -68,7 +67,7 @@ sub authorize_url {
     my $self = shift;
     $self->params->{response_type} = 'code';
     my $url =
-      Mojo::URL->new('https://login.salesforce.com/services/oauth2/authorize')
+      Mojo::URL->new('https://na15.salesforce.com/services/oauth2/authorize')
       ->query($self->params);
     return $url->to_string;
 }
@@ -76,8 +75,7 @@ sub authorize_url {
 sub oauth2 {
     my $self = shift;
     my $tx = $self->ua->post($self->access_token_url => form => $self->params);
-    p $self->params;
-    p $tx->res;
+
     die $tx->res->body unless $tx->success;
 
     my $payload = $self->json->decode($tx->res->body);

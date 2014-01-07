@@ -2,3 +2,5 @@ Revision history for Net-Salesforce
 
 {{$NEXT}}
         - Initial release
+	- Supports api scope
+	- OAuth v2
