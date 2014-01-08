@@ -5,7 +5,6 @@ use Mojo::UserAgent;
 use Mojo::URL;
 use Mojo::Parameters;
 use Digest::SHA;
-use DDP;
 
 our $VERSION = '0.01';
 
@@ -38,14 +37,13 @@ has 'ua' => sub {
 };
 
 sub verify_signature {
-  # TODO: fix verify
+
+    # TODO: fix verify
     my ($self, $payload) = @_;
     my $sha = Digest::SHA->new(256);
     $sha->hmac_sha256($self->secret);
     $sha->add($payload->{id});
     $sha->add($payload->{issued_at});
-    p $sha->b64digest;
-    p $payload->{signature};
     $sha->b64digest eq $payload->{signature};
 }
 

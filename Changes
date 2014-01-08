@@ -1,6 +1,8 @@
 Revision history for Net-Salesforce
 
 {{$NEXT}}
+	- make sure payload returns proper access_token
+	- finalize authenticate routine
 
 0.01  2014-01-07 16:30:28 EST
         - Initial release
