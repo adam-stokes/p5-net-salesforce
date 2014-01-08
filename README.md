@@ -54,6 +54,13 @@ A [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) object.
 
 ## authenticate
 
+# INSTALL
+
+    $ cpanm git://github.com/battlemidget/Net-Salesforce.git
+
+If you'd wish to try out the latest code base you can do so with above
+command.
+
 # AUTHOR
 
 Adam Stokes <adamjs@cpan.org>
