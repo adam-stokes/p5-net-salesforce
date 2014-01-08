@@ -9,6 +9,7 @@ BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
 
 use Mojolicious::Lite;
 use Net::Salesforce;
+use Mojo::URL;
 use DDP;
 
 app->helper(
@@ -17,11 +18,11 @@ app->helper(
         Net::Salesforce->new(
             'key'          => $ENV{SFKEY},
             'secret'       => $ENV{SFSECRET},
-            'redirect_uri' => 'https://localhost:8081/callback'
+            'redirect_uri' => 'https://localhost:8081/callback',
+            'api_url'      => 'https://cs7.salesforce.com/',
         );
     }
 );
-
 
 get '/' => sub {
   my ($c) = @_;

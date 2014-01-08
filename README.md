@@ -18,21 +18,42 @@ Net::Salesforce is an authentication module for Salesforce OAuth 2.
 
 # ATTRIBUTES
 
-## authorize\_url
+## api\_url
 
-## key
+Returns a [Mojo::URL](https://metacpan.org/pod/Mojo::URL) of the Salesforce api host, defaults to
+https://na15.salesforce.com/
+
+## authorize\_path
+
+Endpoint to Salesforce's authorize page.
+
+## access\_token\_path
+
+Endpoint to Salesforce's access token page
 
 ## params
 
-## password
+Form parameters attribute
 
 ## redirect\_uri
 
+Callback URI defined in your Salesforce application
+
 ## response\_type
+
+Response type for authorization callback
 
 ## scope
 
+Scopes available as defined by the Salesforce application.
+
 ## secret
+
+Acts as Salesforce client\_secret
+
+## key
+
+Acts as Salesforce client\_key
 
 ## ua
 
@@ -50,9 +71,13 @@ A [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) object.
 
 ## oauth2
 
+## authorize\_url
+
 ## access\_token\_url
 
 ## authenticate
+
+## password
 
 # INSTALL
 
