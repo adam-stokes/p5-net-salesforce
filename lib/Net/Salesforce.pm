@@ -6,7 +6,7 @@ use Mojo::URL;
 use Mojo::Parameters;
 use Digest::SHA;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 has 'key';
 has 'secret';
