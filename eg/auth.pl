@@ -53,9 +53,12 @@ __DATA__
 </html>
 
 @@ authenticated.html.ep
+% use DDP;
+% p $oauth;
 <html><head><title>Callback</title></head>
 <body>
 <h1>Authenticated</h1>
 <p>Your access_token is: <%= $oauth->{access_token} %></p>
+<p>Your refresh_token is: <%= $oauth->{refresh_token} %></p>
 </body>
 </html>

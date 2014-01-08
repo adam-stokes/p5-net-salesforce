@@ -12,7 +12,7 @@ has 'key';
 has 'secret';
 has 'redirect_uri' => 'https://localhost:8081/callback';
 has 'access_token_url' => 'https://na15.salesforce.com/services/oauth2/token';
-has 'scope' => 'api';
+has 'scope' => 'api refresh_token';
 has 'response_type' => 'code';
 has 'params' => sub {
     my $self = shift;
@@ -48,7 +48,8 @@ sub verify_signature {
 }
 
 sub refresh {
-    my $self = shift;
+    my ($self, $refresh_token) = @_;
+    $self->params->{refresh_token} = $refresh_token;
     $self->params->{grant_type} = 'refresh_token';
     return $self->oauth2;
 }
