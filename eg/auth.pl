@@ -19,7 +19,7 @@ app->helper(
             'key'          => $ENV{SFKEY},
             'secret'       => $ENV{SFSECRET},
             'redirect_uri' => 'https://localhost:8081/callback',
-            'api_url'      => 'https://cs7.salesforce.com/',
+            'api_host'      => 'https://cs7.salesforce.com/',
         );
     }
 );

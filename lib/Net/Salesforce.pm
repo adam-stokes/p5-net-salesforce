@@ -14,7 +14,7 @@ has 'secret';
 
 has 'redirect_uri' => 'https://localhost:8081/callback';
 
-has 'api_url' => 'https://na15.salesforce.com/';
+has 'api_host' => 'https://na15.salesforce.com/';
 
 has 'access_token_path' => 'services/oauth2/token';
 
@@ -80,7 +80,7 @@ sub authenticate {
 sub authorize_url {
     my $self = shift;
     $self->params->{response_type} = 'code';
-    my $url = Mojo::URL->new($self->api_url)
+    my $url = Mojo::URL->new($self->api_host)
       ->path($self->authorize_path)
       ->query($self->params);
     return $url->to_string;
@@ -88,7 +88,7 @@ sub authorize_url {
 
 sub access_token_url {
     my $self = shift;
-    my $url  = Mojo::URL->new($self->api_url)->path($self->access_token_path);
+    my $url  = Mojo::URL->new($self->api_host)->path($self->access_token_path);
     return $url->to_string;
 }
 
@@ -133,7 +133,7 @@ Net::Salesforce is an authentication module for Salesforce OAuth 2.
 
 =head1 ATTRIBUTES
 
-=head2 api_url
+=head2 api_host
 
 Returns a L<Mojo::URL> of the Salesforce api host, defaults to
 https://na15.salesforce.com/
