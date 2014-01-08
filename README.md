@@ -18,7 +18,7 @@ Net::Salesforce is an authentication module for Salesforce OAuth 2.
 
 # ATTRIBUTES
 
-## api\_url
+## api\_host
 
 Returns a [Mojo::URL](https://metacpan.org/pod/Mojo::URL) of the Salesforce api host, defaults to
 https://na15.salesforce.com/
