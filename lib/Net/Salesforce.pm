@@ -151,6 +151,13 @@ A L<Mojo::JSON> object.
 
 =head2 authenticate
 
+=head1 INSTALL
+
+  $ cpanm git://github.com/battlemidget/Net-Salesforce.git
+
+If you'd wish to try out the latest code base you can do so with above
+command.
+
 =head1 AUTHOR
 
 Adam Stokes E<lt>adamjs@cpan.orgE<gt>
