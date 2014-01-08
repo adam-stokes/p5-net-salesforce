@@ -35,9 +35,7 @@ post '/auth' => sub {
 get '/callback' => sub {
   my ($c) = @_;
   my $authorization_code = $c->param('code');
-  p $authorization_code;
   my $payload = app->sf->authenticate($authorization_code);
-  p $payload;
   $c->stash(oauth => $payload);
 } => 'authenticated';
 
@@ -58,5 +56,6 @@ __DATA__
 <html><head><title>Callback</title></head>
 <body>
 <h1>Authenticated</h1>
+<p>Your access_token is: <%= $oauth->{access_token} %></p>
 </body>
 </html>
