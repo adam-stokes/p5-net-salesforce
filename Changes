@@ -1,6 +1,8 @@
 Revision history for Net-Salesforce
 
 {{$NEXT}}
+
+1.0.0  2014-01-11 14:44:01 EST
 	- Add refresh_token api
 	- Add example on capturing a refresh_token
 	- OAuth v2
