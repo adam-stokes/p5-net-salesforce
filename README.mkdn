@@ -1,6 +1,10 @@
 # NAME
 
-Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
+Net::Salesforce
+
+# VERSION
+
+version 1.100
 
 # SYNOPSIS
 
@@ -15,6 +19,10 @@ Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
 # DESCRIPTION
 
 Net::Salesforce is an authentication module for Salesforce OAuth 2.
+
+# NAME
+
+Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
 
 # ATTRIBUTES
 
@@ -100,3 +108,14 @@ This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 # SEE ALSO
+
+# AUTHOR
+
+Adam Stokes <adamjs@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by Adam Stokes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
