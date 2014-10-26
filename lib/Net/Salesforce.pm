@@ -1,12 +1,12 @@
 package Net::Salesforce;
 
+# ABSTRACT: An authentication module for Salesforce OAuth 2.
+
 use Mojo::Base -base;
 use Mojo::UserAgent;
 use Mojo::URL;
 use Mojo::Parameters;
 use Digest::SHA;
-
-our $VERSION = '1.0.0';
 
 has 'key';
 
@@ -42,7 +42,7 @@ has 'json' => sub {
 has 'ua' => sub {
     my $self = shift;
     my $ua = Mojo::UserAgent->new;
-    $ua->transactor->name("Net::Salesforce/$VERSION");
+    $ua->transactor->name("Net::Salesforce/$Net::Salesforce::VERSION");
     return $ua;
 };
 
@@ -109,13 +109,6 @@ sub oauth2 {
 }
 
 1;
-__END__
-
-=encoding utf-8
-
-=head1 NAME
-
-Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
 
 =head1 SYNOPSIS
 
@@ -127,93 +120,63 @@ Net::Salesforce - Authentication against Salesforce OAuth 2 endpoints.
       'redirect_uri' => 'https://localhost:8081/callback'
   );
 
-=head1 DESCRIPTION
-
-Net::Salesforce is an authentication module for Salesforce OAuth 2.
-
-=head1 ATTRIBUTES
-
-=head2 api_host
+=attr api_host
 
 Returns a L<Mojo::URL> of the Salesforce api host, defaults to
 https://na15.salesforce.com/
 
-=head2 authorize_path
+=attr authorize_path
 
 Endpoint to Salesforce's authorize page.
 
-=head2 access_token_path
+=attr access_token_path
 
 Endpoint to Salesforce's access token page
 
-=head2 params
+=attr params
 
 Form parameters attribute
 
-=head2 redirect_uri
+=attr redirect_uri
 
 Callback URI defined in your Salesforce application
 
-=head2 response_type
+=attr response_type
 
 Response type for authorization callback
 
-=head2 scope
+=attr scope
 
 Scopes available as defined by the Salesforce application.
 
-=head2 secret
+=attr secret
 
 Acts as Salesforce client_secret
 
-=head2 key
+=attr key
 
 Acts as Salesforce client_key
 
-=head2 ua
+=attr ua
 
 A L<Mojo::UserAgent> object.
 
-=head2 json
+=attr json
 
 A L<Mojo::JSON> object.
 
-=head1 METHODS
+=method verify_signature
 
-=head2 verify_signature
+=method refresh
 
-=head2 refresh
+=method oauth2
 
-=head2 oauth2
+=method authorize_url
 
-=head2 authorize_url
+=method access_token_url
 
-=head2 access_token_url
+=method authenticate
 
-=head2 authenticate
-
-=head2 password
-
-=head1 INSTALL
-
-  $ cpanm git://github.com/battlemidget/Net-Salesforce.git
-
-If you'd wish to try out the latest code base you can do so with above
-command.
-
-=head1 AUTHOR
-
-Adam Stokes E<lt>adamjs@cpan.orgE<gt>
-
-=head1 COPYRIGHT
-
-Copyright 2014- Adam Stokes
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
+=method password
 
 =cut
