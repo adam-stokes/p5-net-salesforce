@@ -6,6 +6,7 @@ use Mojo::Base -base;
 use Mojo::UserAgent;
 use Mojo::URL;
 use Mojo::Parameters;
+use Mojo::JSON qw(decode_json encode_json);
 use Digest::SHA;
 
 has 'key';
@@ -31,12 +32,6 @@ has 'params' => sub {
         client_secret => $self->secret,
         redirect_uri  => $self->redirect_uri,
     };
-};
-
-has 'json' => sub {
-    my $self = shift;
-    my $json = Mojo::JSON->new;
-    return $json;
 };
 
 has 'ua' => sub {
@@ -100,7 +95,7 @@ sub oauth2 {
 
     die $tx->res->body unless $tx->success;
 
-    my $payload = $self->json->decode($tx->res->body);
+    my $payload = decode_json($tx->res->body);
 
   # TODO: fix verify signature
   # die "Unable to verify signature" unless $self->verify_signature($payload);
